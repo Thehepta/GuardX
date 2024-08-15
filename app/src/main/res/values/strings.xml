@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GuardX</string>
+    <string name="service_name">sshd</string>
+    <string name="lbl_interface">Interface:</string>
+    <string name="lbl_port">Port:</string>
+    <string name="err_no_ip">No network interfaces found?</string>
+
+</resources>

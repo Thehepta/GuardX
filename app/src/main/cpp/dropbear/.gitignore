@@ -1,0 +1,34 @@
+*~
+*.o
+*.a
+*.da
+*.bb
+*.bbg
+*.prof
+.*.swp
+/obj
+/autom4te.cache
+/config.log
+/config.status
+/dbclient
+/dropbear
+/dropbearconvert
+/dropbearkey
+/dropbearmulti
+/fuzzcorpus
+/fuzzer-*
+/fuzzer-*.options
+/scp
+/scp-progress
+config.h
+default_options_guard.h
+# SSHD4A_REQUIRED_CHANGE: we should add the localoptions to git. They are essential for building.
+# localoptions.h
+Makefile
+tags
+.pytest*
+*.pyc
+/test/venv/
+/test/init/
+/test/fakekey
+.vscode/
