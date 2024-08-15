@@ -22,7 +22,7 @@ See default_options.h.in for a description of the available options.
 #endif
 
 /* default_options.h is processed to add #ifndef guards */
-#include "default_options_guard.h"
+#include"default_options_guard.h"
 
 /* Some other defines that mostly should be left alone are defined
  * in sysoptions.h */

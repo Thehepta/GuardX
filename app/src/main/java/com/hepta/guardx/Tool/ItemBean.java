@@ -1,5 +1,6 @@
 package com.hepta.guardx.Tool;
 
+import android.content.Context;
 import android.util.Log;
 
 public class ItemBean {
@@ -23,7 +24,7 @@ public class ItemBean {
     }
 
 
-    public void ItemHandle(){
-        Log.e("rzx","");
+    public void ItemHandle(Context context){
+
     }
 }

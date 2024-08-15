@@ -1,6 +1,9 @@
 package com.hepta.guardx.Tool;
 
+import android.content.Context;
 import android.util.Log;
+
+import com.hepta.guardx.DropbearUtil;
 
 public class MountItem extends ItemBean {
 
@@ -10,7 +13,6 @@ public class MountItem extends ItemBean {
     }
 
     @Override
-    public void ItemHandle() {
-        Log.e("rzx","MountItem");
-    }
-}
+    public void ItemHandle(Context context){
+        DropbearUtil.mountTest();
+    }}

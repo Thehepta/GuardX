@@ -238,7 +238,7 @@ const char *from_java_string(JNIEnv *env, jstring str) {
 
 
 JNIEXPORT jint JNICALL
-Java_com_hepta_guardx_SshdService_start_1sshd(
+Java_com_hepta_guardx_DropbearUtil_start_1sshd(
         JNIEnv *env,
         jobject thiz,
         jstring j_lib_path,
@@ -307,7 +307,7 @@ Java_com_hepta_guardx_SshdService_start_1sshd(
 }
 
 JNIEXPORT void JNICALL
-Java_com_hepta_guardx_SshdService_kill(
+Java_com_hepta_guardx_DropbearUtil_kill(
         JNIEnv *env,
         jobject thiz,
         jint pid) {
@@ -315,7 +315,7 @@ Java_com_hepta_guardx_SshdService_kill(
 }
 
 JNIEXPORT int JNICALL
-Java_com_hepta_guardx_SshdService_waitpid(
+Java_com_hepta_guardx_DropbearUtil_waitpid(
         JNIEnv *env,
         jobject thiz,
         jint pid) {
@@ -327,3 +327,10 @@ Java_com_hepta_guardx_SshdService_waitpid(
     return 0;
 }
 
+
+JNIEXPORT void JNICALL
+Java_com_hepta_guardx_DropbearUtil_mountTest(JNIEnv *env, jclass clazz) {
+
+
+
+}

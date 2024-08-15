@@ -28,7 +28,7 @@ public class ToolsActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener<ItemBean>() {
             @Override
             public void onClick(@NonNull BaseQuickAdapter<ItemBean, ?> baseQuickAdapter, @NonNull View view, int i) {
-                baseQuickAdapter.getItem(i).ItemHandle();
+                baseQuickAdapter.getItem(i).ItemHandle(getApplicationContext());
             }
         });
 

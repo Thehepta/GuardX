@@ -18,9 +18,6 @@ public class SshdActivity extends AppCompatActivity {
 
 
     // Used to load the 'guardx' library on application startup.
-    static {
-        System.loadLibrary("jni-dropbear");
-    }
 
     private ServiceViewModel vm;
     private ActivitySshdBinding binding;

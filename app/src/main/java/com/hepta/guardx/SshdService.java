@@ -134,7 +134,7 @@ public class SshdService extends Service {
         final String env =  "";
 
 
-        final int pid = start_sshd(getApplicationInfo().nativeLibraryDir,
+        final int pid = DropbearUtil.start_sshd(getApplicationInfo().nativeLibraryDir,
                 args, confPath, homePath, shellCmd, env,
                 true,
                 true);
@@ -167,7 +167,7 @@ public class SshdService extends Service {
                 }
 
                 // Pause until the dropbear process changes state
-                waitpid(pid);
+                DropbearUtil.waitpid(pid);
 
                 final boolean failed;
                 final boolean restart;
@@ -191,12 +191,12 @@ public class SshdService extends Service {
                     }
                 }
 
-//                if (restart) {
-//                    startSshd();
-//                } else if (failed) {
-//                    // not restarting and failed
-//                    updateUI();
-//                }
+                if (restart) {
+                    startSshd();
+                } else if (failed) {
+                    // not restarting and failed
+                    updateUI();
+                }
             });
         }
 
@@ -215,22 +215,13 @@ public class SshdService extends Service {
             sshdPid = 0;
             if (pid > 0) {
                     Log.d(TAG + "|stopSshd", "killing pid=" + pid);
-                kill(pid);
+                DropbearUtil.kill(pid);
             }
         }
         updateUI();
     }
 
 
-    private native int start_sshd(@NonNull String lib,
-                                  @NonNull String[] dropbearArgs,
-                                  @NonNull String confPath,
-                                  @NonNull String homePath,
-                                  @NonNull String shell,
-                                  @NonNull String env,
-                                  boolean enablePublickeyAuth,
-                                  boolean enableSingleUsePasswords);
-    private native int waitpid(int pid);
-    private native void kill(int pid);
+
 
 }
