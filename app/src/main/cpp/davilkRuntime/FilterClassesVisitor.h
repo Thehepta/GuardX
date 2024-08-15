@@ -9,6 +9,7 @@
 #include "art_method.h"
 #include "Util.h"
 #include <vector>
+
 class FilterClassesVisitor : public ClassLoaderVisitor {
 
     JNIEnv *env;
@@ -29,10 +30,21 @@ public:
     REQUIRES_SHARED(Locks::classlinker_classes_lock_, Locks::mutator_lock_) OVERRIDE {
 
         AndroidRunAPI* androidRunApi = AndroidRunAPI::getInstance();
-        jobject classLoader_obj =  androidRunApi->AddGlobalRef( jniEnvExt->vm_,jniEnvExt->self_, class_loader);
+        jclass classLoader_obj =   (jclass)androidRunApi->AddGlobalRef( jniEnvExt->vm_,jniEnvExt->self_, class_loader);
         jboolean re =  env->IsInstanceOf(cls,classLoader_obj);
+        if(re){
+            // 这是一个class
+            // 获取Class对象的getName方法
+            jmethodID getNameMethod = env->GetMethodID(classLoader_obj, "getName", "()Ljava/lang/String;");
+            // 调用getName方法获取类名
+            jstring className = (jstring) env->CallObjectMethod(cls, getNameMethod);
+            // 将jstring转化为C字符串
+            const char *classNameCStr = env->GetStringUTFChars(className, NULL);
 
-        vec_obj.push_back(classLoader_obj);
+
+        } else{
+            //object
+        }
 
     }
 
@@ -43,6 +55,8 @@ public:
 private:
     JNIEnvExt* jniEnvExt;
     std::vector<jobject> vec_obj;
+
+
 };
 
 

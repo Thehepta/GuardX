@@ -38,6 +38,7 @@ add_library(davilkRuntime SHARED
         art_method.cpp
         method.cpp
         jvmti.cpp
+        FilterClassesVisitor.cpp
         runtime/scoped_thread_state_change.cpp)
 
 # Specifies libraries CMake should link to your target library. You

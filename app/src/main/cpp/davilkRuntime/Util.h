@@ -4,6 +4,12 @@
 
 #pragma once
 #include "RuntimePart.h"
+#include <android/log.h>
+
+#define LOGV(...)  ((void)__android_log_print(ANDROID_LOG_INFO, "davlikRuntime", __VA_ARGS__))
+
+
+
 
 template<typename T>
 int findOffset(void *start, int regionStart, int regionEnd, T value) {
