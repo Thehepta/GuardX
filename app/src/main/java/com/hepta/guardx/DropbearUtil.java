@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 public class DropbearUtil {
 
     static {
-        System.loadLibrary("jni-dropbear");
+        System.loadLibrary("customSshd");
     }
 
 
