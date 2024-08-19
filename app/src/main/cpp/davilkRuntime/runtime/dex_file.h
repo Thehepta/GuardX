@@ -2,8 +2,7 @@
 // Created by thehepta on 2023/10/2.
 //
 
-#ifndef ANDJVMENV_DEX_FILE_H
-#define ANDJVMENV_DEX_FILE_H
+#pragma once
 
 static constexpr size_t kSha1DigestSize = 20;
 struct Header {
@@ -84,14 +83,9 @@ public:
     // Number of elements in the method handles list.
     size_t num_method_handles_;
 
-
 // The size of the data section.
     const size_t data_size_;
 };
 class OatFile {
 
 };
-
-
-
-#endif //ANDJVMENV_DEX_FILE_H

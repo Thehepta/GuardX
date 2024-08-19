@@ -27,6 +27,7 @@ public:
     }
 
     bool operator()(ObjPtr<Object> klass)  override REQUIRES_SHARED(Locks::mutator_lock_) {
+//        ObjPtr<Class> cls_klass = klass;
         return true;
     }
 
