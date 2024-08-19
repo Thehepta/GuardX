@@ -36,7 +36,6 @@ add_library(davilkRuntime SHARED
         RuntimePart.cpp
         elf_symbol_resolver.cpp
         art_method.cpp
-        method.cpp
         jvmti.cpp
         FilterClassesVisitor.cpp
         runtime/scoped_thread_state_change.cpp)

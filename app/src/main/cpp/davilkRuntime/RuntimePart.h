@@ -8,9 +8,9 @@
 
 #include <jni.h>
 #include <string>
+#include <mutex>
 #include "elf_symbol_resolver.h"
 #include "runtime/macro.h"
-#include <mutex>
 #include "runtime/thread_state.h"
 #include "runtime/base/value_object.h"
 #include "runtime/obj_ptr.h"
@@ -18,27 +18,16 @@
 
 
 
-//jobjectArray getClassLoaders(JNIEnv *env, jint targetSdkVersion);
-//jobjectArray getBaseDexClassLoaders(JNIEnv *env, jint targetSdkVersion);
+struct JavaVMExt {
+    void *functions;
+    void *runtime;
+};
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+struct JNIEnvExt {
+    void*  self_;
+    JavaVMExt*  vm_;
+};
 
 
 /*
@@ -64,24 +53,6 @@
  * ...
  * }
  */
-
-
-
-
-
-
-
-struct JavaVMExt {
-    void *functions;
-    void *runtime;
-};
-
-
-struct JNIEnvExt {
-    void*  self_;
-    JavaVMExt*  vm_;
-};
-
 
 
 struct PartialRuntime {

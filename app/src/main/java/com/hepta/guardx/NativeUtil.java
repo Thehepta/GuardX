@@ -15,7 +15,7 @@ public class NativeUtil {
 
     public static native ClassLoader[] getBaseDexClassLoaderList();
     public static native ClassLoader[] getClassLoaderList();
-    public static native List<String> getClassFind(List<String> classNames);
+    public static native List<String> getFilterClass(List<String> classNames);
 
 
     public static List<String> matchClass(List<String> classNames) {
