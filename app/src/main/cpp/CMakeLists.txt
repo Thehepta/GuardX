@@ -7,11 +7,21 @@ cmake_minimum_required(VERSION 3.22.1)
 
 # Declares and names the project.
 
-project("entry")
+project("GuardX")
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIE")
 
 add_subdirectory(customSshd)
 add_subdirectory(davilkRuntime)
+add_subdirectory(soInfo)
+
+include_directories(davilkRuntime)
+
+add_library(GuardX SHARED
+           GuardX.cpp)
 
 
-
+target_link_libraries(GuardX
+        davilkRuntime
+        log)

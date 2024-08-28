@@ -5,8 +5,6 @@
 #pragma once
 #include "RuntimePart.h"
 #include "runtime/class_linker.h"
-#include "runtime/scoped_thread_state_change.h"
-#include "art_method.h"
 #include <vector>
 #include "Util.h"
 class LookupClassesVisitor : public ClassLoaderVisitor {
@@ -21,11 +19,9 @@ public:
 
     void Visit(ObjPtr<Object> class_loader)
     REQUIRES_SHARED(Locks::classlinker_classes_lock_, Locks::mutator_lock_) OVERRIDE {
-
         AndroidRunAPI* androidRunApi = AndroidRunAPI::getInstance();
         jobject classLoader_obj =  androidRunApi->AddGlobalRef( jniEnvExt->vm_,jniEnvExt->self_, class_loader);
         vec_obj.push_back(classLoader_obj);
-
     }
 
     std::vector<jobject> getVecObj(){

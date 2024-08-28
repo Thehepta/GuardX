@@ -35,6 +35,8 @@ public class ToolsActivity extends AppCompatActivity {
         itemBeans.add(new SShdItem("sshd"));
         itemBeans.add(new MountItem("mount"));
         itemBeans.add(new ClassCheckItem("class Name check"));
+        itemBeans.add(new SoInfoCheckItem("so check check"));
+        itemBeans.add(new ClassLoaderListItem("class loader list"));
     }
 
     /**

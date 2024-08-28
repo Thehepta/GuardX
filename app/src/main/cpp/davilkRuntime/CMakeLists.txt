@@ -33,6 +33,7 @@ include_directories(./)
 
 add_library(davilkRuntime SHARED
     # List C/C++ source files with relative paths to this CMakeLists.txt.
+        davilkRuntime.cpp
         RuntimePart.cpp
         elf_symbol_resolver.cpp
         art_method.cpp
