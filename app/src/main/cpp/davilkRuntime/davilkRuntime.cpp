@@ -4,6 +4,7 @@
 
 #include "davilkRuntime.h"
 #include "LookupClassesVisitor.h"
+#include "FilterClassesVisitor.h"
 
 #define LOGV(...)
 
@@ -14,16 +15,16 @@ jobjectArray getClassLoaders(JNIEnv *env, jclass clazz) {
 
     JavaVM *javaVM;
     env->GetJavaVM(&javaVM);
-    JavaVMExt *javaVMExt = (JavaVMExt *) javaVM;
+    auto *javaVMExt = (JavaVMExt *) javaVM;
     int offsetOfVmExt = findOffset(env, 0, 10000, (void*) javaVMExt);
-    uint8_t * u_env = reinterpret_cast<uint8_t *>(env);
-    JNIEnvExt* jniEnvExt = reinterpret_cast<JNIEnvExt *>(u_env + offsetOfVmExt - sizeof(void *));
+    auto * u_env = reinterpret_cast<uint8_t *>(env);
+    auto* jniEnvExt = reinterpret_cast<JNIEnvExt *>(u_env + offsetOfVmExt - sizeof(void *));
 
     AndroidRunAPI* androidRunApi = AndroidRunAPI::getInstance();
     LookupClassesVisitor visitor(env, jniEnvExt);
     androidRunApi->VisitClassLoaders(androidRunApi->partialRuntime->class_linker_,&visitor);
 
-    std::vector<jobject>  vectorObject =  visitor.getVecObj();
+    auto  vectorObject =  visitor.getVecObj();
     jclass  ClassLoader_cls = env->FindClass("java/lang/ClassLoader");
 
     for (auto it = vectorObject.begin(); it != vectorObject.end(); /* no increment here */) {
@@ -36,12 +37,47 @@ jobjectArray getClassLoaders(JNIEnv *env, jclass clazz) {
         }
     }
 
-    jobjectArray objectArray = env->NewObjectArray(vectorObject.size(), ClassLoader_cls, NULL);
+    jobjectArray objectArray = env->NewObjectArray(vectorObject.size(), ClassLoader_cls, nullptr);
 
     for(int i=0;i<vectorObject.size();i++){
         env->SetObjectArrayElement(objectArray, i, vectorObject[i]);
     }
     return objectArray;
+}
+
+jobjectArray getFilterClass(JNIEnv *env, jclass clazz) {
+
+    JavaVM *javaVM;
+    env->GetJavaVM(&javaVM);
+    JavaVMExt *javaVMExt = (JavaVMExt *) javaVM;
+    int offsetOfVmExt = findOffset(env, 0, 10000, (void*) javaVMExt);
+    uint8_t * u_env = reinterpret_cast<uint8_t *>(env);
+    JNIEnvExt* jniEnvExt = reinterpret_cast<JNIEnvExt *>(u_env + offsetOfVmExt - sizeof(void *));
+
+    AndroidRunAPI* androidRunApi = AndroidRunAPI::getInstance();
+    FilterClassesVisitor visitor(env, jniEnvExt);
+    androidRunApi->VisitClassLoaders(androidRunApi->partialRuntime->class_linker_,&visitor);
+
+//    std::vector<jobject>  vectorObject =  visitor.getVecObj();
+//    jclass  ClassLoader_cls = env->FindClass("java/lang/ClassLoader");
+//
+//    for (auto it = vectorObject.begin(); it != vectorObject.end(); /* no increment here */) {
+//        jboolean re =  env->IsInstanceOf(*it,ClassLoader_cls);
+//        if(!re){
+//            it = vectorObject.erase(it);
+////            env->DeleteGlobalRef(*it);
+//        } else{
+//            ++it;
+//        }
+//    }
+//
+//    jobjectArray objectArray = env->NewObjectArray(vectorObject.size(), ClassLoader_cls, NULL);
+//
+//    for(int i=0;i<vectorObject.size();i++){
+//        env->SetObjectArrayElement(objectArray, i, vectorObject[i]);
+//    }
+//    return objectArray;
+    return nullptr;
 }
 
 
@@ -72,6 +108,7 @@ int get_heap_to_jvm_offset(){
 void getAndroidSystemFunction(){
     AndroidRunAPI* androidRunApi = AndroidRunAPI::getInstance();
 
+    androidRunApi->VisitClasses = (void (*) (void* , void* ))resolve_elf_internal_symbol("libart.so","_ZN3art11ClassLinker12VisitClassesEPNS_12ClassVisitorE");
     androidRunApi->VisitClassLoaders = (void (*) (void* , void* ))resolve_elf_internal_symbol("libart.so","_ZNK3art11ClassLinker17VisitClassLoadersEPNS_18ClassLoaderVisitorE");
     androidRunApi->AddGlobalRef = (jobject (*)(void *, void *,ObjPtr<Object> ))resolve_elf_internal_symbol("libart.so","_ZN3art9JavaVMExt12AddGlobalRefEPNS_6ThreadENS_6ObjPtrINS_6mirror6ObjectEEE");
 

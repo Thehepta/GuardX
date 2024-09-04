@@ -9,4 +9,5 @@
 
 
 jobjectArray getClassLoaders(JNIEnv *env, jclass clazz) ;
+jobjectArray getFilterClass(JNIEnv *env, jclass clazz) ;
 void InitRuntimePart(JNIEnv *env) ;

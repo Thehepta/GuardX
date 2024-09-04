@@ -14,7 +14,7 @@ class ClassVisitor {
 public:
     virtual ~ClassVisitor() {}
     // Return true to continue visiting.
-    virtual bool operator()(ObjPtr<Object> klass) = 0;
+    virtual bool operator()(ObjPtr<Class> klass) = 0;
 };
 
 class ClassLoaderVisitor {

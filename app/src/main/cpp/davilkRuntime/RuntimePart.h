@@ -75,6 +75,7 @@ struct AndroidRunAPI{
     void *runtime;
     PartialRuntime * partialRuntime;
 
+    void (*VisitClasses)(void *ClassLinker_this, void *visitor);
     void (*VisitClassLoaders)(void *ClassLinker_this, void *visitor);
     jobject (*AddGlobalRef)(void *JavaVMExt_this, void *thread_self,ObjPtr<Object> obj);
     bool (*ensurePluginLoaded)(void *Runtime_this, const char* plugin_name, std::string* error_msg);

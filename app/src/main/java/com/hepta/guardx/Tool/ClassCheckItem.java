@@ -22,6 +22,6 @@ public class ClassCheckItem extends ItemBean {
         findClasses.add("de.robv.android.xposed.XposedBridge");
         findClasses.add("com.hepta.guardx.Tool");
         List<String> foundClasses = NativeUtil.getFilterClass(findClasses);
-        Log.e("rzx",foundClasses.toString());
+//        Log.e("rzx",foundClasses.toString());
     }
 }

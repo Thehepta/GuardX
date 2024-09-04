@@ -26,14 +26,18 @@ public:
 
     }
 
-    bool operator()(ObjPtr<Object> klass)  override REQUIRES_SHARED(Locks::mutator_lock_) {
+    bool operator()(ObjPtr<Class> klass)  override REQUIRES_SHARED(Locks::mutator_lock_) {
 //        ObjPtr<Class> cls_klass = klass;
+//如果想要遍历类，需要想办法吧类名输出，可以吧类名函数导出
         return true;
     }
 
 
     std::vector<jobject> getVecObj(){
         return vec_obj;
+    }
+    ~FilterClassesVisitor() override{
+        env->DeleteGlobalRef(cls);
     }
 
 private:

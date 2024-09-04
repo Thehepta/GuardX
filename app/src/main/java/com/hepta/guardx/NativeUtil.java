@@ -13,7 +13,6 @@ public class NativeUtil {
         System.loadLibrary("GuardX");
     }
 
-    public static native ClassLoader[] getBaseDexClassLoaderList();
     public static native ClassLoader[] getClassLoaderList();
     public static native List<String> getFilterClass(List<String> classNames);
     public static native List<String> getSoinfoList();
