@@ -19,6 +19,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIE")
 
 
 add_library(soInfo  SHARED
+        elf_symbol_resolver.cpp
         soinfo.cpp)
 
 target_link_libraries(soInfo

@@ -5,6 +5,9 @@
 
 #include <jni.h>
 #include "davilkRuntime.h"
+#include "soInfo/soinfo.h"
+
+
 extern "C"
 JNIEXPORT jobjectArray JNICALL
 Java_com_hepta_guardx_NativeUtil_getClassLoaderList(JNIEnv *env, jclass clazz) {
@@ -26,7 +29,7 @@ extern "C"
 JNIEXPORT jobject JNICALL
 Java_com_hepta_guardx_NativeUtil_getSoinfoList(JNIEnv *env, jclass clazz) {
     // TODO: implement getSoinfoList()
-
+    find_all_library_name();
     return nullptr;
 }
 

@@ -18,11 +18,6 @@ public class SoInfoCheckItem extends ItemBean {
     @Override
     public void ItemHandle(Context context){
 
-
-        List<String> findClasses = new ArrayList<>();
-        findClasses.add("de.robv.android.xposed.XposedBridge");
-        findClasses.add("com.hepta.guardx.Tool");
         List<String> foundClasses = NativeUtil.getSoinfoList();
-        Log.e("rzx",foundClasses.toString());
     }
 }

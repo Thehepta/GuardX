@@ -24,4 +24,5 @@ add_library(GuardX SHARED
 
 target_link_libraries(GuardX
         davilkRuntime
+        soInfo
         log)
