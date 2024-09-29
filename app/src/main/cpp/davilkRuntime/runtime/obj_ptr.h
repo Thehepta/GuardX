@@ -27,28 +27,35 @@ public:
     // Note: The following constructors allow implicit conversion. This simplifies code that uses
     //       them, e.g., for parameter passing. However, in general, implicit-conversion constructors
     //       are discouraged and detected by clang-tidy.
-    OBJPTR_INLINE ObjPtr(std::nullptr_t)
-    REQUIRES_SHARED(Locks::mutator_lock_)
-            : reference_(0u) {}
-    OBJPTR_INLINE ObjPtr& operator=(MirrorType* ptr) REQUIRES_SHARED(Locks::mutator_lock_);
-    OBJPTR_INLINE void Assign(MirrorType* ptr) REQUIRES_SHARED(Locks::mutator_lock_);
-    OBJPTR_INLINE MirrorType* operator->() const REQUIRES_SHARED(Locks::mutator_lock_);
+//    OBJPTR_INLINE ObjPtr(std::nullptr_t)
+//    REQUIRES_SHARED(Locks::mutator_lock_)
+//            : reference_(0u) {}
+//    OBJPTR_INLINE ObjPtr& operator=(MirrorType* ptr) REQUIRES_SHARED(Locks::mutator_lock_);
+//    OBJPTR_INLINE void Assign(MirrorType* ptr) REQUIRES_SHARED(Locks::mutator_lock_);
+    OBJPTR_INLINE MirrorType* operator->() const REQUIRES_SHARED(Locks::mutator_lock_){
+        return Ptr();
+    }
     OBJPTR_INLINE bool IsNull() const {
         return reference_ == 0;
     }
-    // Ptr makes sure that the object pointer is valid.
+//    // Ptr makes sure that the object pointer is valid.
     OBJPTR_INLINE MirrorType* Ptr() const REQUIRES_SHARED(Locks::mutator_lock_) const {
-        AssertValid();
+//        AssertValid();   //这部分应该断言，没有特殊情况不会出错，这里我们先干掉
         return PtrUnchecked();
     }
-    OBJPTR_INLINE bool IsValid() const REQUIRES_SHARED(Locks::mutator_lock_);
-    OBJPTR_INLINE void AssertValid() const REQUIRES_SHARED(Locks::mutator_lock_)const {
-        if (kObjPtrPoisoning) {
-            CHECK(IsValid()) << "Stale object pointer " << PtrUnchecked() << " , expected cookie "
-                             << GetCurrentTrimedCookie() << " but got " << GetCookie();
-        }
-    }
-    // Ptr unchecked does not check that object pointer is valid. Do not use if you can avoid it.
+//    OBJPTR_INLINE bool IsValid() const REQUIRES_SHARED(Locks::mutator_lock_){
+//        if (!kObjPtrPoisoning || IsNull()) {
+//            return true;
+//        }
+//        return GetCookie() == GetCurrentTrimedCookie();
+//    }
+//    OBJPTR_INLINE void AssertValid() const REQUIRES_SHARED(Locks::mutator_lock_)const {
+//        if (kObjPtrPoisoning) {
+//            CHECK(IsValid()) << "Stale object pointer " << PtrUnchecked() << " , expected cookie "
+//                             << GetCurrentTrimedCookie() << " but got " << GetCookie();
+//        }
+//    }
+//    // Ptr unchecked does not check that object pointer is valid. Do not use if you can avoid it.
     OBJPTR_INLINE MirrorType* PtrUnchecked() const {
         if (kObjPtrPoisoning) {
             return reinterpret_cast<MirrorType*>(
@@ -57,19 +64,19 @@ public:
             return reinterpret_cast<MirrorType*>(reference_);
         }
     }
-    // Static function to be friendly with null pointers.
-    template <typename SourceType>
-    static ObjPtr<MirrorType> DownCast(ObjPtr<SourceType> ptr) REQUIRES_SHARED(Locks::mutator_lock_);
-    // Static function to be friendly with null pointers.
-    template <typename SourceType>
-    static ObjPtr<MirrorType> DownCast(SourceType* ptr) REQUIRES_SHARED(Locks::mutator_lock_);
-private:
-    // Trim off high bits of thread local cookie.
-    OBJPTR_INLINE static uintptr_t GetCurrentTrimedCookie();
+//    // Static function to be friendly with null pointers.
+//    template <typename SourceType>
+//    static ObjPtr<MirrorType> DownCast(ObjPtr<SourceType> ptr) REQUIRES_SHARED(Locks::mutator_lock_);
+//    // Static function to be friendly with null pointers.
+//    template <typename SourceType>
+//    static ObjPtr<MirrorType> DownCast(SourceType* ptr) REQUIRES_SHARED(Locks::mutator_lock_);
+//private:
+//    // Trim off high bits of thread local cookie.
+//    OBJPTR_INLINE static uintptr_t GetCurrentTrimedCookie();
     OBJPTR_INLINE uintptr_t GetCookie() const {
         return reference_ >> kCookieShift;
     }
-    OBJPTR_INLINE static uintptr_t Encode(MirrorType* ptr) REQUIRES_SHARED(Locks::mutator_lock_);
+//    OBJPTR_INLINE static uintptr_t Encode(MirrorType* ptr) REQUIRES_SHARED(Locks::mutator_lock_);
     // The encoded reference and cookie.
     uintptr_t reference_;
     template <class T> friend class ObjPtr;  // Required for reference_ access in copy cons/operator.

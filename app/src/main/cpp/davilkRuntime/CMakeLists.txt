@@ -29,6 +29,7 @@ include_directories(./)
 # System.loadLibrary() and pass the name of the library defined here;
 # for GameActivity/NativeActivity derived applications, the same library name must be
 # used in the AndroidManifest.xml file.
+aux_source_directory(runtime RUNTIME_SRC_LIST)
 
 
 add_library(davilkRuntime SHARED
@@ -39,6 +40,7 @@ add_library(davilkRuntime SHARED
         art_method.cpp
         jvmti.cpp
         FilterClassesVisitor.cpp
+        runtime/mirror/class.cpp
         runtime/scoped_thread_state_change.cpp)
 
 # Specifies libraries CMake should link to your target library. You

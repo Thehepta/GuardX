@@ -5,7 +5,7 @@
 #include "davilkRuntime.h"
 #include "LookupClassesVisitor.h"
 #include "FilterClassesVisitor.h"
-
+#include "runtime/mirror/class.h"
 #define LOGV(...)
 
 
@@ -111,7 +111,7 @@ void getAndroidSystemFunction(){
     androidRunApi->VisitClasses = (void (*) (void* , void* ))resolve_elf_internal_symbol("libart.so","_ZN3art11ClassLinker12VisitClassesEPNS_12ClassVisitorE");
     androidRunApi->VisitClassLoaders = (void (*) (void* , void* ))resolve_elf_internal_symbol("libart.so","_ZNK3art11ClassLinker17VisitClassLoadersEPNS_18ClassLoaderVisitorE");
     androidRunApi->AddGlobalRef = (jobject (*)(void *, void *,ObjPtr<Object> ))resolve_elf_internal_symbol("libart.so","_ZN3art9JavaVMExt12AddGlobalRefEPNS_6ThreadENS_6ObjPtrINS_6mirror6ObjectEEE");
-
+    Class::classStubFun->PrettyDescriptor = (std::string (*)(Class*))resolve_elf_internal_symbol("libart.so","_ZN3art6mirror5Class16PrettyDescriptorENS_6ObjPtrIS1_EE");
 }
 
 

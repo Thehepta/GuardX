@@ -12,7 +12,7 @@
 
 class ClassVisitor {
 public:
-    virtual ~ClassVisitor() {}
+    virtual ~ClassVisitor() = default;
     // Return true to continue visiting.
     virtual bool operator()(ObjPtr<Class> klass) = 0;
 };

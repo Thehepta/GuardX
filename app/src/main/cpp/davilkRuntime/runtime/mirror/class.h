@@ -6,15 +6,28 @@
 #include "object.h"
 #include "runtime/dex_file.h"
 #include <unordered_map>
-
 class ClassLoader;
 class DexCache;
 class String;
 class ClassExt;
 class IfTable;
 class PointerArray;
-class MANAGED  __attribute__((unused)) Class final : public Object {
+class Class;
 
+class Class_StubFun{
+
+public:
+    std::string (*PrettyDescriptor)(Class*);
+    Class_StubFun(){}
+};
+
+class MANAGED  Class final : public Object {
+
+public:
+    static Class_StubFun *classStubFun;
+    std::string PrettyDescriptor() REQUIRES_SHARED(Locks::mutator_lock_);
+
+private:
 // Defining class loader, or null for the "bootstrap" system loader.
     HeapReference<ClassLoader> class_loader_;
 
