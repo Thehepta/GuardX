@@ -1,8 +1,7 @@
-package com.hepta.guardx.Tool;
+package com.hepta.guardx.Tool.base;
 
 
 import android.content.Context;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;

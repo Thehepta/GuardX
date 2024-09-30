@@ -1,7 +1,6 @@
-package com.hepta.guardx.Tool;
+package com.hepta.guardx.Tool.base;
 
 import android.content.Context;
-import android.util.Log;
 
 public class ItemBean {
 

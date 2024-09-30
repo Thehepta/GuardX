@@ -1,11 +1,7 @@
-package com.hepta.guardx;
-
-import android.util.Log;
+package com.hepta.guardx.Tool.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import dalvik.system.BaseDexClassLoader;
 
 public class NativeUtil {
 

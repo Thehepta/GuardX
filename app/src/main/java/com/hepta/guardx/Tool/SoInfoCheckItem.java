@@ -1,14 +1,11 @@
 package com.hepta.guardx.Tool;
 
 import android.content.Context;
-import android.util.Log;
 
-import com.hepta.guardx.NativeUtil;
+import com.hepta.guardx.Tool.base.ItemBean;
+import com.hepta.guardx.Tool.utils.NativeUtil;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import dalvik.system.PathClassLoader;
 
 public class SoInfoCheckItem extends ItemBean {
     public  SoInfoCheckItem(String msg) {

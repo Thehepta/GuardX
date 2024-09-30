@@ -2,7 +2,6 @@ package com.hepta.guardx.Tool;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -10,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.chad.library.adapter4.BaseQuickAdapter;
+import com.hepta.guardx.Tool.base.ItemBean;
+import com.hepta.guardx.Tool.base.RecyclerViewAdapter;
 import com.hepta.guardx.databinding.ActivityToolsBinding;
 import java.util.ArrayList;
 
@@ -37,6 +38,8 @@ public class ToolsActivity extends AppCompatActivity {
         itemBeans.add(new ClassCheckItem("className check"));
         itemBeans.add(new SoInfoCheckItem("soInfo check"));
         itemBeans.add(new ClassLoaderListItem("ClassLoader check"));
+        itemBeans.add(new RunningAppItem("RunningApp check"));
+        itemBeans.add(new DeviceInfoItem("DeviceInfoItem check"));
     }
 
     /**

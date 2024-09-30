@@ -1,14 +1,11 @@
 package com.hepta.guardx.Tool;
 
 
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.hepta.guardx.SshdActivity;
-import com.hepta.guardx.Tool.ItemBean;
+import com.hepta.guardx.Tool.base.ItemBean;
 
 public class SShdItem extends ItemBean {
 

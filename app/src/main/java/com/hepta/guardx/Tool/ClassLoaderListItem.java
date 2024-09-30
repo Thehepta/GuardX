@@ -3,11 +3,10 @@ package com.hepta.guardx.Tool;
 import android.content.Context;
 import android.util.Log;
 
-import com.hepta.guardx.NativeUtil;
+import com.hepta.guardx.Tool.base.ItemBean;
+import com.hepta.guardx.Tool.utils.NativeUtil;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
 
 import dalvik.system.BaseDexClassLoader;
 import dalvik.system.DexFile;

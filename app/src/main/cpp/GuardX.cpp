@@ -8,36 +8,6 @@
 #include "soInfo/soinfo.h"
 
 
-extern "C"
-JNIEXPORT jobjectArray JNICALL
-Java_com_hepta_guardx_NativeUtil_getClassLoaderList(JNIEnv *env, jclass clazz) {
-    // TODO: implement getClassLoaderList()
-    return getClassLoaders(env,clazz);
-
-}
-
-extern "C"
-JNIEXPORT jobject JNICALL
-Java_com_hepta_guardx_NativeUtil_getFilterClass(JNIEnv *env, jclass clazz, jobject class_names) {
-
-    return getFilterClass(env,clazz);
-
-}
-
-
-extern "C"
-JNIEXPORT jobject JNICALL
-Java_com_hepta_guardx_NativeUtil_getSoinfoList(JNIEnv *env, jclass clazz) {
-    // TODO: implement getSoinfoList()
-    find_all_library_name();
-    return nullptr;
-}
-
-
-
-
-
-
 jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 
     JNIEnv* env;
@@ -46,4 +16,24 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     }
     InitRuntimePart(env);
     return JNI_VERSION_1_6;
+}
+
+extern "C"
+JNIEXPORT jobjectArray JNICALL
+Java_com_hepta_guardx_Tool_utils_NativeUtil_getClassLoaderList(JNIEnv *env, jclass clazz) {
+    // TODO: implement getClassLoaderList()
+    return getClassLoaders(env,clazz);
+}
+
+extern "C"
+JNIEXPORT jobject JNICALL
+Java_com_hepta_guardx_Tool_utils_NativeUtil_getFilterClass(JNIEnv *env, jclass clazz,
+                                                           jobject class_names) {
+    return getFilterClass(env,clazz);
+}
+extern "C"
+JNIEXPORT jobject JNICALL
+Java_com_hepta_guardx_Tool_utils_NativeUtil_getSoinfoList(JNIEnv *env, jclass clazz) {
+    find_all_library_name();
+    return nullptr;
 }

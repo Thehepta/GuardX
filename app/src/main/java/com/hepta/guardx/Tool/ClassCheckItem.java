@@ -1,10 +1,9 @@
 package com.hepta.guardx.Tool;
 
 import android.content.Context;
-import android.util.Log;
 
-import com.hepta.guardx.DropbearUtil;
-import com.hepta.guardx.NativeUtil;
+import com.hepta.guardx.Tool.base.ItemBean;
+import com.hepta.guardx.Tool.utils.NativeUtil;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.hepta.guardx.DropbearUtil;
+import com.hepta.guardx.Tool.base.ItemBean;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
