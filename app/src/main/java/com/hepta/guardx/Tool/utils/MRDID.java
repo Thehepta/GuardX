@@ -91,12 +91,11 @@ public class MRDID  {
             try {
                 MediaDrm drm = new MediaDrm(uuid);
                 MessageDigest md5 = MessageDigest.getInstance("MD5");
-                byte[] bytes = drm.getPropertyByteArray("deviceUniqueId");
+                byte[] bytes = drm.getPropertyByteArray("deviceUniqueId");  //fefd768a6b015a14767061ed7a48e094ccd04048b382260198e2df7f948ef7fd
                 String vendor = drm.getPropertyString("vendor");
                 String version = drm.getPropertyString("version");
                 String description = drm.getPropertyString("description");
-//                byte[] digest = md5.digest(bytes);
-                String result = byteToString(bytes);
+                String result = g(bytes);
                 Log.i("td_MediaDrmId:", result);
                 return result+":"+vendor+":"+version+":"+description;
 
@@ -107,11 +106,24 @@ public class MRDID  {
 //        }
         return null;
     }
-    public static  String byteToString(byte[] bytes){
-        StringBuilder sb = new StringBuilder();
-        for (byte b : bytes) {
-            String hexString = Integer.toHexString(b);
-            if (hexString.length() < 2) {
+
+
+    public static int m(String str) {
+        if (str != null) {
+            return str.length();
+        }
+        return 0;
+    }
+
+    public static String g(byte[] bArr) {
+
+        StringBuilder sb = new StringBuilder("");
+        if (bArr == null || bArr.length <= 0) {
+            return null;
+        }
+        for (byte b : bArr) {
+            String hexString = Integer.toHexString(b & 255);
+            if (m(hexString) < 2) {
                 sb.append(0);
             }
             sb.append(hexString);

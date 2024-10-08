@@ -21,7 +21,8 @@ public class DeviceInfoItem extends ItemBean {
     @Override
     public void ItemHandle(Context context){
 
-        Log.e("DeviceInfoItem",getMediaDrm());
+        Log.e("DeviceInfoItem","Oaid:"+getOaid(context));
+        Log.e("DeviceInfoItem","DRMID:"+getMediaDrm());
         Log.e("DeviceInfoItem","RXPOSED_ACTIVITY:"+System.getenv("RXPOSED_ACTIVITY"));
     }
 
