@@ -40,6 +40,7 @@ public class ToolsActivity extends AppCompatActivity {
         itemBeans.add(new ClassLoaderListItem("ClassLoader check"));
         itemBeans.add(new RunningAppItem("RunningApp check"));
         itemBeans.add(new DeviceInfoItem("DeviceInfoItem check"));
+        itemBeans.add(new OpenDeepLinkItem("openDeepLink"));
     }
 
     /**
