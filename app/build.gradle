@@ -39,7 +39,9 @@ android {
 
 dependencies {
     //RecyclerView
+    implementation "com.squareup.okhttp3:okhttp:+"
     implementation "io.github.cymchad:BaseRecyclerViewAdapterHelper4:4.1.4"
+    implementation "com.github.ChickenHook:RestrictionBypass:2.2"
     implementation libs.appcompat
     implementation libs.material
     implementation libs.constraintlayout

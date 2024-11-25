@@ -1,4 +1,4 @@
-package com.hepta.guardx.Tool.utils;
+package com.hepta.guardx.Tool.deviceInfo;
 
 
 import android.media.MediaDrm;
@@ -6,17 +6,26 @@ import android.os.Build;
 import android.util.Base64;
 import android.util.Log;
 
+import com.hepta.guardx.Tool.base.ItemInfoBean;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.security.MessageDigest;
 import java.util.UUID;
 
-public class MRDID  {
+public class MRDID extends ItemInfoBean {
 
 
+    @Override
+    public String getTitle() {
+        return "MRDID";
+    }
 
 
-
+    @Override
+    public String getMsg() {
+        return getDrmId();
+    }
 
     public static String getMediaDrmId() {
         if (Build.VERSION.SDK_INT < 23 || Build.VERSION.SDK_INT > 29) {

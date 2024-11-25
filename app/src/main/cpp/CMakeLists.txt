@@ -18,11 +18,20 @@ add_subdirectory(soInfo)
 
 include_directories(davilkRuntime)
 
+OPTION(LSPLT_BUILD_SHARED OFF)
+add_subdirectory(lsplt)
+
+
+
+
 add_library(GuardX SHARED
-           GuardX.cpp)
+        artmethod_native_hook.cpp
+        checkNative.cpp
+        GuardX.cpp)
 
 
 target_link_libraries(GuardX
+        lsplt_static
         davilkRuntime
         soInfo
         log)

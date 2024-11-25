@@ -15,18 +15,18 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class RecyclerViewAdapter extends BaseQuickAdapter<ItemBean, QuickViewHolder> {
+public class RecyclerViewCardAdapter extends BaseQuickAdapter<ItemCardBean, QuickViewHolder> {
 
-    public RecyclerViewAdapter(@Nullable List<ItemBean> data){
+    public RecyclerViewCardAdapter(@Nullable List<ItemCardBean> data){
         super(Objects.requireNonNull(data));
     }
     @NonNull
     @Override
     protected QuickViewHolder onCreateViewHolder(@NonNull Context context, @NonNull ViewGroup viewGroup, int i) {
-        return new QuickViewHolder(R.layout.item_check_status,viewGroup);
+        return new QuickViewHolder(R.layout.item_card_view,viewGroup);
     }
     @Override
-    protected void onBindViewHolder(@NonNull QuickViewHolder viewHolder, int i, @Nullable ItemBean itemBean) {
+    protected void onBindViewHolder(@NonNull QuickViewHolder viewHolder, int i, @Nullable ItemCardBean itemBean) {
         viewHolder.setText(R.id.text1, itemBean.getMsg());
     }
 

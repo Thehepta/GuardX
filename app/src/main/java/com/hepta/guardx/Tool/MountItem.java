@@ -3,8 +3,8 @@ package com.hepta.guardx.Tool;
 import android.content.Context;
 import android.util.Log;
 
-import com.hepta.guardx.DropbearUtil;
-import com.hepta.guardx.Tool.base.ItemBean;
+import com.hepta.guardx.Tool.Sshd.DropbearUtil;
+import com.hepta.guardx.Tool.base.ItemCardBean;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
-public class MountItem extends ItemBean {
+public class MountItem extends ItemCardBean {
 
 
     public MountItem(String msg) {

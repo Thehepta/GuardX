@@ -6,6 +6,10 @@
 #include <jni.h>
 #include "davilkRuntime.h"
 #include "soInfo/soinfo.h"
+#include <android/log.h>
+
+#include "checkNative.h"
+
 
 
 jint JNI_OnLoad(JavaVM* vm, void* reserved) {
@@ -36,4 +40,11 @@ JNIEXPORT jobject JNICALL
 Java_com_hepta_guardx_Tool_utils_NativeUtil_getSoinfoList(JNIEnv *env, jclass clazz) {
     find_all_library_name();
     return nullptr;
+}
+extern "C"
+JNIEXPORT jboolean JNICALL
+Java_com_hepta_guardx_Tool_utils_NativeUtil_lsplt(JNIEnv *env, jclass clazz, jobject nativeSpecializeAppProcess_method) {
+    // TODO: implement zygiskCheck()
+    lspltTest(env, nativeSpecializeAppProcess_method);
+    return true;
 }

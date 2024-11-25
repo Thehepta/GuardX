@@ -2,12 +2,12 @@ package com.hepta.guardx.Tool.base;
 
 import android.content.Context;
 
-public class ItemBean {
+public class ItemCardBean {
 
     String index;
     String msg;
     boolean status;
-    public ItemBean(String msg) {
+    public ItemCardBean(String msg) {
         this.msg = msg;
     }
     public String getIndex() {

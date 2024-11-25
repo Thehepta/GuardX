@@ -3,15 +3,15 @@ package com.hepta.guardx.Tool;
 
 
 import android.content.Context;
-import android.telephony.TelephonyManager;
-import android.util.Log;
+import android.content.Intent;
 
-import com.hepta.guardx.Tool.base.ItemBean;
-import com.hepta.guardx.Tool.utils.MRDID;
+import com.hepta.guardx.Tool.base.ItemCardBean;
+import com.hepta.guardx.Tool.deviceInfo.DeviceInfoActivity;
+import com.hepta.guardx.Tool.deviceInfo.MRDID;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class DeviceInfoItem extends ItemBean {
+public class DeviceInfoItem extends ItemCardBean {
 
 
     public DeviceInfoItem(String msg) {
@@ -21,32 +21,17 @@ public class DeviceInfoItem extends ItemBean {
     @Override
     public void ItemHandle(Context context){
 
-        Log.e("DeviceInfoItem","Oaid:"+getOaid(context));
-        Log.e("DeviceInfoItem","DRMID:"+getMediaDrm());
-        Log.e("DeviceInfoItem","RXPOSED_ACTIVITY:"+System.getenv("RXPOSED_ACTIVITY"));
+        Intent intent = new Intent(context, DeviceInfoActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent,null);
+
+//        Log.e("DeviceInfoItem","Oaid:"+getOaid(context));
+//        Log.e("DeviceInfoItem","DRMID:"+getMediaDrm());
+//        Log.e("DeviceInfoItem","RXPOSED_ACTIVITY:"+System.getenv("RXPOSED_ACTIVITY"));
     }
 
 
-     //不同版本可能不一样，写的这个是小米的
-    String getOaid(Context context){
-        Class<?> cls = null;
-        try {
-            cls = Class.forName("com.android.id.impl.IdProviderImpl");
-            String oaid = null;
-            oaid = (String) cls.getMethod("getOAID", Context.class).invoke(cls.newInstance(), context);
-            Log.i("OaidItem", "oaid is: " + oaid);
-            return oaid;
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException |
-                 InstantiationException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    String getMediaDrm() {
 
-        return MRDID.getDrmId();
-    }
 
-//    String ip_list(Context context) {
-//
-//    }
+
 }

@@ -3,7 +3,7 @@ package com.hepta.guardx.Tool;
 import android.content.Context;
 import android.util.Log;
 
-import com.hepta.guardx.Tool.base.ItemBean;
+import com.hepta.guardx.Tool.base.ItemCardBean;
 import com.hepta.guardx.Tool.utils.NativeUtil;
 
 import java.lang.reflect.Field;
@@ -12,7 +12,7 @@ import dalvik.system.BaseDexClassLoader;
 import dalvik.system.DexFile;
 import dalvik.system.PathClassLoader;
 
-public class ClassLoaderListItem extends ItemBean {
+public class ClassLoaderListItem extends ItemCardBean {
     public ClassLoaderListItem(String msg) {
         super(msg);
     }

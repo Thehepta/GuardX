@@ -2,13 +2,13 @@ package com.hepta.guardx.Tool;
 
 import android.content.Context;
 
-import com.hepta.guardx.Tool.base.ItemBean;
+import com.hepta.guardx.Tool.base.ItemCardBean;
 import com.hepta.guardx.Tool.utils.NativeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClassCheckItem extends ItemBean {
+public class ClassCheckItem extends ItemCardBean {
 
 
     public ClassCheckItem(String msg) {

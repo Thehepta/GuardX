@@ -2,12 +2,12 @@ package com.hepta.guardx.Tool;
 
 import android.content.Context;
 
-import com.hepta.guardx.Tool.base.ItemBean;
+import com.hepta.guardx.Tool.base.ItemCardBean;
 import com.hepta.guardx.Tool.utils.NativeUtil;
 
 import java.util.List;
 
-public class SoInfoCheckItem extends ItemBean {
+public class SoInfoCheckItem extends ItemCardBean {
     public  SoInfoCheckItem(String msg) {
         super(msg);
     }

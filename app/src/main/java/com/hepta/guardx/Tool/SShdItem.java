@@ -4,10 +4,10 @@ package com.hepta.guardx.Tool;
 import android.content.Context;
 import android.content.Intent;
 
-import com.hepta.guardx.SshdActivity;
-import com.hepta.guardx.Tool.base.ItemBean;
+import com.hepta.guardx.Tool.Sshd.SshdActivity;
+import com.hepta.guardx.Tool.base.ItemCardBean;
 
-public class SShdItem extends ItemBean {
+public class SShdItem extends ItemCardBean {
 
 
     public SShdItem(String msg) {

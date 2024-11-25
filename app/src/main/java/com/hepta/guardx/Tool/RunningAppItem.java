@@ -6,14 +6,14 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.hepta.guardx.Tool.base.ItemBean;
+import com.hepta.guardx.Tool.base.ItemCardBean;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class RunningAppItem extends ItemBean {
+public class RunningAppItem extends ItemCardBean {
 
 
     public RunningAppItem(String msg) {
